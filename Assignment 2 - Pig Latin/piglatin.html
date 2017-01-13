@@ -1,0 +1,55 @@
+<!--
+Amy Funk
+Homework #2 - Pig Latin
+Date: 1/13/2017
+-->
+<html>
+<body>
+<script>
+//initializes variable pigLatin
+var pigLatin ="";
+
+//prompts user to enter a phrase for translation
+var sentence = prompt("Enter a phrase to be translated to Pig Latin: ");
+
+//creates regular expression to search for lower or uppercase (i) vowels
+var beginRegex = /[aeiou]/gi;
+
+//creates regular expression to search for lower or uppercase (i) vowels and y 
+var midRegex = /[aeiouy]/gi;
+
+//start of while loop
+while(true){
+//if user inputs data
+if (sentence.length > 0)
+{
+    //splits sentence in words array
+    var words = sentence.split(" ");
+    
+    //loops through array 
+    for (i = 0; i < words.length; i++){
+        //if the word starts with a vowel add "way"
+        if (words[i][0].match(beginRegex))
+        {
+            words[i] = words[i] + "-way";
+            
+        }else{ 
+            //finding the first instance of a vowel (Including y in cases like my) in the word and getting the position in the string of it
+            var vowelPos = words[i].indexOf(words[i].match(midRegex)[0])
+            words[i] = words[i].substr(vowelPos) + "-" + words[i].substr(0, vowelPos) + "ay";
+            
+        }
+    }
+    //puts array back together
+    pigLatin = words.join(" ");
+    
+    //writes result
+    document.write(pigLatin);
+    break;
+}else{ //when user does not input data
+    sentence = prompt("ERROR: Please enter in a phrase.");
+}
+}
+</script>
+</body>                                 
+</html>
