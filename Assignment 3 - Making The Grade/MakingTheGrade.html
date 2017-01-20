@@ -1,30 +1,66 @@
 <html>
 <body>
 <script>
-
+ 
+//function that returns average of scores
+function getAve(numbers){
+    var total = 0;
+    for(i = 0; i < numbers.length; i++){
+        total += numbers[i];
+    }
+    average = total / numbers.length;
+    return average;
+}
+//function that returns minimum of scores
+function getMin(numbers){
+    var min = Infinity;
+    for(i = 0; i < numbers.length; i++){
+        if(numbers[i] < min){
+            min = numbers[i];
+        }
+    }
+    return min;
+}
+//function that returns maximum of scores
+function getMax(numbers){
+    var max = 0;
+    for(i = 0; i < numbers.length; i++){
+        if(numbers[i] > max){
+            max = numbers[i];
+        }
+    }
+    return max;
+}
+    
 //defining the array
 var names = ["jim|25", "sue|32", "mary|34", "ann|22", "ted|28", "frank|15", "lisa|19", "mike|30", "anh|26", "vishaya|27"];
-    
+
+//initializing text variable
 var text = "";
+
+//initializing grades variable
+var grades = [];
 
 //iterates through array
 for(i = 0; i < names.length; i++){
     //alphabetizes names
 	names.sort();
-    //makes first character uppercase
+    //makes first character uppercase and puts string back together
 	names[i] = names[i].charAt(0).toUpperCase() + names[i].substr(1);
     //splits at the "|" character
     names[i] = names[i].split("|");
+    //populating grades array with int value of scores
+    grades[i] = parseInt(names[i][1]);
     //joins the string back together with a space
-    names[i] = names[i].join(" ");
+    names[i] = names[i].join(" - ");
     //formats array to be printed out with a breakline
     text += names[i] + "<br>";
     
 }  
     
-//prints out formatted array items
-document.write(text);  
-    
+//prints out formatted array items, min, max, average, and total
+document.write(text + "<br>Total Number of Students: " + names.length + "<br>Minimum Score: " + getMin(grades) + "<br>Maximum Score: " + getMax(grades) + "<br>Average Score: " + getAve(grades) );  
+
     
     
     
