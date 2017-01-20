@@ -1,0 +1,34 @@
+<html>
+<body>
+<script>
+
+//defining the array
+var names = ["jim|25", "sue|32", "mary|34", "ann|22", "ted|28", "frank|15", "lisa|19", "mike|30", "anh|26", "vishaya|27"];
+    
+var text = "";
+
+//iterates through array
+for(i = 0; i < names.length; i++){
+    //alphabetizes names
+	names.sort();
+    //makes first character uppercase
+	names[i] = names[i].charAt(0).toUpperCase() + names[i].substr(1);
+    //splits at the "|" character
+    names[i] = names[i].split("|");
+    //joins the string back together with a space
+    names[i] = names[i].join(" ");
+    //formats array to be printed out with a breakline
+    text += names[i] + "<br>";
+    
+}  
+    
+//prints out formatted array items
+document.write(text);  
+    
+    
+    
+    
+    
+</script>  
+</body>
+</html>
