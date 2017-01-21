@@ -31,9 +31,11 @@ function getMax(numbers){
     }
     return max;
 }
+
     
-//defining the array
-var names = ["jim|25", "sue|32", "mary|34", "ann|22", "ted|28", "frank|15", "lisa|19", "mike|30", "anh|26", "vishaya|27"];
+var names = "jim|25, sue|32, mary|34, ann|22, ted|28, frank|15, lisa|19, mike|30, ahn|26, vishaya|27";    
+names = names.split(",");
+
 
 //initializing text variable
 var text = "";
@@ -41,10 +43,16 @@ var text = "";
 //initializing grades variable
 var grades = [];
 
+for(i = 0; i < names.length; i++){
+    //trims away spaces
+    names[i] = names[i].trim()
+}
+
+//alphabetizes names
+names = names.sort();    
+    
 //iterates through array
 for(i = 0; i < names.length; i++){
-    //alphabetizes names
-	names.sort();
     //makes first character uppercase and puts string back together
 	names[i] = names[i].charAt(0).toUpperCase() + names[i].substr(1);
     //splits at the "|" character
