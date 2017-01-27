@@ -60,7 +60,7 @@ function checkPassword(password){
         
     }
     else if(!upper.test(password)){
-        document.write("Error: Your password must contain an uppercase letter.")
+        $("#message").html("Error: Your password must contain an uppercase letter.")
         
     }else{
         $("#message").html("You entered all information correctly!"); 
