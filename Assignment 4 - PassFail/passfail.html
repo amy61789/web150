@@ -27,10 +27,10 @@ function validateForm(myForm) {
   var password = myForm.password.value;
     
     if (firstname.length < 1){
-        document.write("Error: Please enter in a first name.");
+        $("#message").html("Error: Please enter in a first name.");
     }
     else if(lastname.length < 1){
-        document.write("Error: Please enter in a last name.");
+        $("#message").html("Error: Please enter in a last name.");
 
     }else{
         checkPassword(password);
@@ -52,11 +52,11 @@ function checkPassword(password){
     var lower = /[a-z]/;
     var upper = /[A-Z]/;
     if(password.length < 8){
-        document.write("Error: Your password isn't long enough! Must be at least 8 characters long.");
+        $("#message").html("Error: Your password isn't long enough! Must be at least 8 characters long.");
         
     }
     else if(!lower.test(password)){
-        document.write("Error: Your password must contain a lowercase letter.")
+        $("#message").html("Error: Your password must contain a lowercase letter.")
         
     }
     else if(!upper.test(password)){
