@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<script>
+
+function makeDeck(){
+    var value = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+    var suit = ["&clubs;", "&diams;", "&hearts;", "&spades;"];
+    
+    var deck = [];
+    
+    for(i = 0; i < 4; i++){
+        for (j = 0; j < 13; j++){
+            deck.push("<ul><li>" + value[j] + " of " + suit[i]+ "</li></ul>");
+        }
+    }
+    return deck;
+} 
+    
+function makeDeckValue(){
+    var value = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+    var suit = ["&clubs;", "&diams;", "&hearts;", "&spades;"];
+    
+    var deck = [];
+    
+    for(i = 0; i < 4; i++){
+        for (j = 0; j < 13; j++){
+            if(value[j] == "Ace" || value[j] == "Jack" || value[j] == "Queen" || value[j] == "King"){
+                deck.push(10);
+            }else{
+                deck.push(parseInt(value[j]));
+            }
+          
+        }
+    }
+    return deck;
+} 
+
+function deal(){
+    var deck = makeDeck();
+    var deckCheck = [];
+    while(deckCheck.length < 5){
+
+        var card = Math.floor(Math.random() * 52);
+
+        if(notContain(deckCheck, card)){
+            var message = "#message" + String(i);
+            $(message).html(deck[card]);
+            deckCheck.push(card);
+        }
+    }
+}
+
+function notContain(ar, value){
+    for(i = 0; i < ar.length; i++){
+        if(ar[i] == value){
+            return false;
+        }
+    }return true;
+}
+
+function blackJack(){
+    var deck = makeDeck();
+    var deckValue = makeDeckValue();
+    var deckCheck = [];
+    var cardAmt = 0;
+    while(deckCheck.length < 3){
+        var card = Math.floor(Math.random() * 52);
+
+        if(notContain(deckCheck, card)){
+           cardAmt += deckValue[card];
+        }
+
+        var message = "#mess" + String(i);
+        $(message).html(deck[card]);
+        deckCheck.push(card);
+
+        if(cardAmt > 21){
+            $("#score").html("You went over 21, you lose! Total Score: " + cardAmt); 
+        }else if(cardAmt < 21){
+            $("#score").html("Oh no, you scored too low! Total Score: " + cardAmt); 
+        }else if(cardAmt == 21){
+            $("#score").html("You win!!! Total Score: "); 
+        }
+
+    }
+}
+
+
+</script>
+<body>
+
+<h1>Robo Dealer</h1>
+    <div id="message0"></div>
+    <div id="message1"></div>
+    <div id="message2"></div>
+    <div id="message3"></div>
+    <div id="message4"></div>
+    
+<button onclick="deal()">Deal Cards!</button>
+    
+<h1>Blackjack Game</h1>    
+    <div id="mess0"></div>
+    
+    <div id="mess1"></div>
+    
+    <div id="mess2"></div>
+    <div id ="score"></div>
+    
+<button onclick="blackJack()">I'm ready to play!</button>
+
+</body>
+</html> 
