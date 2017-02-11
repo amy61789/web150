@@ -9,12 +9,21 @@
         .selected {
             background-color: green;
         }
-    </style>
+        
+  </style>
 
     <body>
         <div id="roles"></div>
         
         <button id="gryffindor">Gryffindor</button><button id="hufflepuff">Hufflepuff</button><button id="slytherin">Slytherin</button><button id="ravenclaw">Ravenclaw</button><button id="reset">Reset</button>
+        
+        <select id="selectField">
+            <option value="All" selected>All</option>
+            <option value="Student">Student</option>
+            <option value="Staff">Staff</option>
+            <option value="Evil">Evil</option>
+            <option value="Good">Good</option>
+        </select>
         
         <table id ="potter" border='1'><tr><th>Name</th><th>Role</th><th>House</th><th>Gender</th><th>Aligns</th><tr></table>
     </body>
@@ -36,7 +45,12 @@
         {name:"Voldemort", role:"", house:"Slytherin",gender:"m",alignment:"evil"},    
         {name:"Bellatrix Lestrange", role:"", house:"Slytherin",gender:"f",alignment:"evil"},           
         {name:"Severus Snape", role:"staff", house:"Slytherin",gender:"m",alignment:"?"},    
-        {name:"Dobby", role:"", house:"",gender:"?",alignment:"good"}
+        {name:"Dobby", role:"", house:"",gender:"?",alignment:"good"},
+        {name:"Cedric Diggory", role:"student", house:"Hufflepuff",gender:"m",alignment:"good"},
+        {name:"Pomona Sprout", role:"staff", house:"Hufflepuff",gender:"f",alignment:"good"},
+        {name:"Cho Chang", role:"student", house:"Ravenclaw",gender:"f",alignment:"good"},
+        {name:"Filius Flitwick", role:"staff", house:"Ravenclaw",gender:"m",alignment:"good"},
+        {name:"Sybill Trelawney", role:"staff", house:"Ravenclaw",gender:"f",alignment:"good"}
         ];
 
         var table = document.getElementById("potter");
@@ -62,17 +76,60 @@
         // add rows to table
         // generate button for each unique house
         // add button to reset table rows
-
+            
         $(document).ready(function(){
             $("tr:odd").css("background-color", "LightSalmon");
             $("tr:even").css("background-color", "LightBlue");
             $("tr:contains(Name)").show().css("background-color", "White");
+            
             $("#gryffindor").on('click', function(){
                 $("tr").hide();
                 $("tr:contains(Gryffindor)").show();
                 $("tr:visible:odd").css("background-color", "yellow");
                 $("tr:visible:even").css("background-color", "red");
                 $("tr:contains(Name)").show().css("background-color", "White");
+                
+                var rows = $("table#potter tr:not(:first-child)");
+                
+            $("#selectField").on("change", function(){
+                var selected = this.value;
+                
+                if(selected == "Student"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(student):contains(Gryffindor)").show();
+                    $("tr:visible:odd").css("background-color", "yellow");
+                    $("tr:visible:even").css("background-color", "red");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Staff"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(staff):contains(Gryffindor)").show();
+                    $("tr:visible:odd").css("background-color", "yellow");
+                    $("tr:visible:even").css("background-color", "red");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Evil"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(evil):contains(Gryffindor)").show();
+                    $("tr:visible:odd").css("background-color", "yellow");
+                    $("tr:visible:even").css("background-color", "red");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected =="Good"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(good):contains(Gryffindor)").show();
+                    $("tr:visible:odd").css("background-color", "yellow");
+                    $("tr:visible:even").css("background-color", "red");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else{
+                    $("tr").hide();
+                    $("tr:contains(Gryffindor)").show();
+                    $("tr:visible:odd").css("background-color", "yellow");
+                    $("tr:visible:even").css("background-color", "red");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+            });
             });
             
             $("#hufflepuff").on('click', function(){
@@ -81,6 +138,48 @@
                 $("tr:visible:even").css("background-color", "#FFCC00");
                 $("tr:visible:odd").css("background-color", "black").css("color","white");
                 $("tr:contains(Name)").show().css("background-color", "White");
+                
+                var rows = $("table#potter tr:not(:first-child)");
+                
+            $("#selectField").on("change", function(){
+                var selected = this.value;
+                
+                if(selected == "Student"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(student):contains(Hufflepuff)").show();
+                    $("tr:visible:even").css("background-color", "#FFCC00");
+                    $("tr:visible:odd").css("background-color", "black").css("color","white");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Staff"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(staff):contains(Hufflepuff)").show();
+                    $("tr:visible:even").css("background-color", "#FFCC00");
+                    $("tr:visible:odd").css("background-color", "black").css("color","white");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Evil"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(evil):contains(Hufflepuff)").show();
+                    $("tr:visible:even").css("background-color", "#FFCC00");
+                    $("tr:visible:odd").css("background-color", "black").css("color","white");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Good"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(good):contains(Hufflepuff)").show();
+                    $("tr:visible:even").css("background-color", "#FFCC00");
+                    $("tr:visible:odd").css("background-color", "black").css("color","white");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else{
+                    $("tr").hide();
+                    $("tr:contains(Hufflepuff)").show();
+                    $("tr:visible:even").css("background-color", "#FFCC00");
+                    $("tr:visible:odd").css("background-color", "black").css("color","white");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+            });
             });
             $("#slytherin").on('click', function(){
                 $("tr").hide();
@@ -88,6 +187,48 @@
                 $("tr:visible:odd").css("background-color", "green");
                 $("tr:visible:even").css("background-color", "gray");
                 $("tr:contains(Name)").show().css("background-color", "White");
+                
+                var rows = $("table#potter tr:not(:first-child)");
+                
+            $("#selectField").on("change", function(){
+                var selected = this.value;
+                
+                if(selected == "Student"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(student):contains(Slytherin)").show();
+                    $("tr:visible:odd").css("background-color", "green");
+                    $("tr:visible:even").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Staff"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(staff):contains(Slytherin)").show();
+                    $("tr:visible:odd").css("background-color", "green");
+                    $("tr:visible:even").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Evil"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(evil):contains(Slytherin)").show();
+                    $("tr:visible:odd").css("background-color", "green");
+                    $("tr:visible:even").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Good"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(good):contains(Slytherin)").show();
+                    $("tr:visible:odd").css("background-color", "green");
+                    $("tr:visible:even").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else{
+                    $("tr").hide();
+                    $("tr:contains(Slytherin)").show();
+                    $("tr:visible:odd").css("background-color", "green");
+                    $("tr:visible:even").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+            });
             });
             $("#ravenclaw").on('click', function(){
                 $("tr").hide();
@@ -95,13 +236,98 @@
                 $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
                 $("tr:visible:odd").css("background-color", "gray");
                 $("tr:contains(Name)").show().css("background-color", "White");
+                
+                 var rows = $("table#potter tr:not(:first-child)");
+                
+            $("#selectField").on("change", function(){
+                var selected = this.value;
+                
+                if(selected == "Student"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(student):contains(Ravenclaw)").show();
+                    $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
+                    $("tr:visible:odd").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Staff"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(staff):contains(Ravenclaw)").show();
+                    $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
+                    $("tr:visible:odd").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Evil"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(evil):contains(Ravenclaw)").show();
+                    $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
+                    $("tr:visible:odd").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Good"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(good):contains(Ravenclaw)").show();
+                    $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
+                    $("tr:visible:odd").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else{
+                    $("tr").hide();
+                    $("tr:contains(Ravenclaw)").show();
+                    $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
+                    $("tr:visible:odd").css("background-color", "gray");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+            });
             });
             $("#reset").on('click', function(){
                 $("tr").show();
                 $("tr:odd").css("background-color", "LightSalmon");
                 $("tr:even").css("background-color", "LightBlue");
                 $("tr:contains(Name)").show().css("background-color", "White");
+                
+                var rows = $("table#potter tr:not(:first-child)");
+                
+            $("#selectField").on("change", function(){
+                var selected = this.value;
+                
+                if(selected == "Student"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(student)").show();
+                    $("tr:visible:even").css("background-color", "LightSalmon").css("color", "black");
+                    $("tr:visible:odd").css("background-color", "LightBlue").css("color", "black");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Staff"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(staff)").show();
+                    $("tr:visible:even").css("background-color", "LightSalmon").css("color", "black");
+                    $("tr:visible:odd").css("background-color", "LightBlue").css("color", "black");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Evil"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(evil)").show();
+                    $("tr:visible:even").css("background-color", "LightSalmon").css("color", "black");
+                    $("tr:visible:odd").css("background-color", "LightBlue").css("color", "black");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else if(selected == "Good"){
+                    $("tr").hide();
+                    rows.filter("tr:contains(good)").show();
+                    $("tr:visible:even").css("background-color", "LightSalmon").css("color", "black");
+                    $("tr:visible:odd").css("background-color", "LightBlue").css("color", "black");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
+                else{
+                    $("tr").show();
+                    $("tr:odd").css("background-color", "LightSalmon").css("color", "black");
+                    $("tr:even").css("background-color", "LightBlue").css("color", "black");
+                    $("tr:contains(Name)").show().css("background-color", "White");
+                }
             });
+            });
+            
+            
         // add functionality to hide/show rows when button clicked
 
         });
