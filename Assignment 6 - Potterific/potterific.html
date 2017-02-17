@@ -9,6 +9,9 @@
         .selected {
             background-color: green;
         }
+        tr {
+            color: black;
+        }
         
   </style>
 
@@ -80,9 +83,10 @@
         // add button to reset table rows
             
         $(document).ready(function(){
-            $("tr:odd").css("background-color", "LightSalmon");
-            $("tr:even").css("background-color", "LightBlue");
+            $("tr:odd").css("background-color", "LightSalmon").css("color" , "Black");
+            $("tr:even").css("background-color", "LightBlue").css("color" , "Black");
             $("tr:contains(Name)").show().css("background-color", "White");
+            $("tr").css("font-color" , "Black");
             
             $("#gryffindor").on('click', function(){
                 $("tr").hide();
@@ -277,14 +281,14 @@
                     $("tr:contains(Ravenclaw)").show();
                     $("tr:visible:even").css("background-color", "DarkBlue").css("color", "white");
                     $("tr:visible:odd").css("background-color", "gray");
-                    $("tr:contains(Name)").show().css("background-color", "White");
+                    $("tr:contains(Name)").show().css("color", "White");
                 }
             });
             });
             $("#reset").on('click', function(){
                 $("tr").show();
-                $("tr:odd").css("background-color", "LightSalmon");
-                $("tr:even").css("background-color", "LightBlue");
+                $("tr:odd").css("background-color", "LightSalmon").css("color" , "Black");;
+                $("tr:even").css("background-color", "LightBlue").css("color" , "Black");;
                 $("tr:contains(Name)").show().css("background-color", "White");
                 
                 var rows = $("table#potter tr:not(:first-child)");
