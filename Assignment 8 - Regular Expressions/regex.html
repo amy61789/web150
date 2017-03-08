@@ -53,7 +53,7 @@ For phishing scams by phone, fax or mail, call 1-800-366-4484.
         var wordCount = article.trim().replace(wcRegex, ' ').split(' ').length;
         $('#wordCount').html(wordCount);
         
-        var taxRegex = /tax|taxes/ig;
+        var taxRegex = /(\b|[\.\?\!;:,!&])(tax|taxes)(\b|[\.\?\!;:,!&])/i;
         var tax = article.match(taxRegex).length;
         $('#tax').html(tax);
             
