@@ -1,0 +1,100 @@
+<html>
+  <head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    
+    
+    $(document).ready(function(){
+  
+    
+        $('#submit').click(function(e){
+            e.preventDefault();
+
+        var city = $('#city').val();
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=a193635296ae9be3a91c3d79ae7a03fe';
+        $.getJSON(url, function(data){
+            $('#day1').append("<h4>Date: </h4>" +  data.list[0].dt_txt + "<br>");
+        	$('#day1').append("<h4>Temperature: </h4>" +  data.list[0].main.temp);
+            $('#day1').append("<h4>Temperature Min: </h4>" +  data.list[0].main.temp_min);
+            $('#day1').append("<h4>Temperature Max: </h4>" +  data.list[0].main.temp_max);
+            $('#day1').append("<h4>Humidity: </h4>" +  data.list[0].main.humidity + "%");
+            $('#day1').append("<h4>Description: </h4>" +  data.list[0].weather[0].main);
+            $('#icon1').html("<img src='http://openweathermap.org/img/w/" +  data.list[0].weather[0].icon + ".png'> <br><hr>");
+            
+            $('#day2').append("<h4>Date: </h4>" +  data.list[8].dt_txt + "<br>");
+        	$('#day2').append("<h4>Temperature: </h4>" +  data.list[8].main.temp + "<br>");
+            $('#day2').append("<h4>Temperature Min: </h4>" +  data.list[8].main.temp_min + "<br>");
+            $('#day2').append("<h4>Temperature Max: </h4>" +  data.list[8].main.temp_max + "<br>");
+            $('#day2').append("<h4>Humidity: </h4>" +  data.list[8].main.humidity + "%<br>");
+            $('#day2').append("<h4>Description: </h4>" +  data.list[8].weather[0].main + "<br>");
+            $('#icon2').html("<img src='http://openweathermap.org/img/w/" +  data.list[1].weather[0].icon + ".png'> <br><hr>");
+            
+            $('#day3').append("<h4>Date: </h4> " +  data.list[16].dt_txt + "<br>");
+        	$('#day3').append("<h4>Temperature: </h4>" +  data.list[16].main.temp + "<br>");
+            $('#day3').append("<h4>Temperature Min: </h4>" +  data.list[16].main.temp_min + "<br>");
+            $('#day3').append("<h4>Temperature Max: </h4>" +  data.list[16].main.temp_max + "<br>");
+            $('#day3').append("<h4>Humidity: </h4>" +  data.list[16].main.humidity + "%<br>");
+            $('#day3').append("<h4>Description: </h4>" +  data.list[16].weather[0].main + "<br>");
+            $('#icon3').html("<img src='http://openweathermap.org/img/w/" +  data.list[2].weather[0].icon + ".png'> <br><hr>");
+            
+            $('#day4').append("<h4>Date: </h4>" +  data.list[24].dt_txt + "<br>");
+        	$('#day4').append("<h4>Temperature: </h4>" +  data.list[24].main.temp + "<br>");
+            $('#day4').append("<h4>Temperature Min: </h4>" +  data.list[24].main.temp_min + "<br>");
+            $('#day4').append("<h4>Temperature Max: </h4>" +  data.list[24].main.temp_max + "<br>");
+            $('#day4').append("<h4>Humidity: </h4>" +  data.list[24].main.humidity + "%<br>");
+            $('#day4').append("<h4>Description: </h4>" +  data.list[24].weather[0].main + "<br>");
+            $('#icon4').html("<img src='http://openweathermap.org/img/w/" +  data.list[3].weather[0].icon + ".png'> <br><hr>");
+            
+            $('#day5').append("<h4>Date: </h4>" +  data.list[32].dt_txt + "<br>");
+        	$('#day5').append("<h4>Temperature: </h4>" +  data.list[32].main.temp + "<br>");
+            $('#day5').append("<h4>Temperature Min: </h4>" +  data.list[32].main.temp_min + "<br>");
+            $('#day5').append("<h4>Temperature Max: </h4>" +  data.list[32].main.temp_max + "<br>");
+            $('#day5').append("<h4>Humidity: </h4>" +  data.list[32].main.humidity + "%<br>");
+            $('#day5').append("<h4>Description: </h4>" +  data.list[32].weather[0].main + "<br>");
+            $('#icon5').html("<img src='http://openweathermap.org/img/w/" +  data.list[4].weather[0].icon + ".png'> <br><hr>");
+
+   }); 
+   });
+   });
+            
+                
+
+
+            
+    
+</script>
+</head>
+<body>
+
+<form >
+  City:<br>
+  <input id="city" type="text">
+  <br>
+  <br>
+  <button id="submit">Submit</button>
+</form> 
+    
+<div id="day1"></div>
+<div id="icon1"></div>
+   
+<div id="day2"></div>
+<div id="icon2"></div>
+
+<div id="day3"></div>
+<div id="icon3"></div>
+
+<div id="day4"></div>
+<div id="icon4"></div>
+
+<div id="day5"></div>
+<div id="icon5"></div>
+
+
+  <p id="error"></p>
+</body>
+    
+
+    
+
+
+
